@@ -24,8 +24,8 @@ public:
   // Ако е необходимо: деструктор, конструктор за копиране, оператор за присвояване
 
   // Методи за достъп до атрибутите
-  char const* getTitle() const;
-  char const* getArtist() const;
+  char const* getLocation() const;
+  char const* getDate() const;
   double getTemperature() const;
 
   // Оператор за сравнение на измервания: <= (измерванията се сравняват спрямо стойностите,
