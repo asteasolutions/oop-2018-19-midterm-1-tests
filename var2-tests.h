@@ -29,7 +29,7 @@ TEST_CASE("Constructed Songs set values correctly") {
   const int LENGTH = 355;
   const Song si(TITLE, ARTIST, LENGTH);
   CHECK(strcmp(si.getTitle(), TITLE1) == 0);
-  CHECK(strcmp(si.getTitle(), ARTIST1) == 0);
+  CHECK(strcmp(si.getArtist(), ARTIST1) == 0);
   CHECK(si.getLength() == LENGTH);
   // check if sharing is avoided
   strcpy(TITLE, TITLE2);
