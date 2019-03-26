@@ -27,10 +27,6 @@ public:
   char const* getLocation() const;
   char const* getDate() const;
   double getTemperature() const;
-
-  // Оператор за сравнение на измервания: <= (измерванията се сравняват спрямо стойностите,
-  // като другите атрибути се игнорират)
-  bool operator<=(Measurement const& other) const;
 };
 
 ///
