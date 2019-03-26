@@ -89,7 +89,7 @@ public:
   }
 
 
-  // Метод Метод addMeasurement за добавяне на измерване към списъка (ако вече има измерване на същото място,
+  // Метод addMeasurement за добавяне на измерване към списъка (ако вече има измерване на същото място,
   // да остане само измерването с по-голяма стойност)
   void addMeasurement(Measurement const& item) {
     // search for existing item with the same location
