@@ -75,15 +75,15 @@ TEST_CASE("ShoppingItem is assigned correctly and does not share memory") {
 
 int testQuantity(int i) { return 3 * i + 1; }
 
-double testPrice(int i) { return (5 * i + 2 ) / 8; }
+double testPrice(int i) { return (5 * i + 2 ) / 8.0; }
 
 ShoppingItem createTestShoppingItem(int i, bool unique = true) {
    char NAME[] = "XX Test item";
    if (unique)
      NAME[0] = '0' + i / 10;
    NAME[1] = '0' + i % 10;
-   const int QUANTITY = 3 * i + 1;
-   const double PRICE = (5 * i + 2) / 8;
+   const int QUANTITY = testQuantity(i);
+   const double PRICE = testPrice(i);
    return ShoppingItem(NAME, QUANTITY, PRICE);
  }
 
@@ -118,7 +118,7 @@ TEST_CASE("ShoppingList::mostExpensive finds most expensive item") {
   int mostExpensiveHash = -1;
   for(int i = 0; i < MAX; i++) {
     int hash = (31 * i + 79) % 101;
-    sl.addItem(createTestShoppingItem(hash, false));
+    sl.addItem(createTestShoppingItem(hash));
     if (testQuantity(hash) * testPrice(hash) > checkMostExpensive) {
       mostExpensiveHash = hash;
       checkMostExpensive = testQuantity(hash) * testPrice(hash);
@@ -129,7 +129,7 @@ TEST_CASE("ShoppingList::mostExpensive finds most expensive item") {
 
 TEST_CASE("ShoppingList is copied correctly and does not share memory") {
   const int MAX = 10;
-  ShoppingList* sl1 = new ShoppingList(MAX);
+  ShoppingList* sl1 = new ShoppingList(MAX * 2);
   for(int i = 0; i < MAX; i++)
     sl1->addItem(createTestShoppingItem(i));
   ShoppingList sl2 = *sl1;
@@ -139,7 +139,7 @@ TEST_CASE("ShoppingList is copied correctly and does not share memory") {
   CHECK(sl1->totalPrice() != sl2.totalPrice());
   CHECK(sl1->mostExpensive() != sl2.mostExpensive());
   delete sl1;
-  sl1 = new ShoppingList(MAX);
+  sl1 = new ShoppingList(MAX * 2);
   for(int i = 0; i < MAX; i++)
     sl1->addItem(createTestShoppingItem(i + MAX));
   CHECK(sl1->totalPrice() != sl2.totalPrice());
@@ -149,7 +149,7 @@ TEST_CASE("ShoppingList is copied correctly and does not share memory") {
 
 TEST_CASE("ShoppingList is assigned correctly and does not share memory") {
   const int MAX = 10;
-  ShoppingList* sl1 = new ShoppingList(MAX);
+  ShoppingList* sl1 = new ShoppingList(MAX * 2);
   for(int i = 0; i < MAX; i++)
     sl1->addItem(createTestShoppingItem(i));
   ShoppingList sl2(MAX);
@@ -162,7 +162,7 @@ TEST_CASE("ShoppingList is assigned correctly and does not share memory") {
   CHECK(sl1->totalPrice() != sl2.totalPrice());
   CHECK(sl1->mostExpensive() != sl2.mostExpensive());
   delete sl1;
-  sl1 = new ShoppingList(MAX);
+  sl1 = new ShoppingList(MAX * 2);
   for(int i = 0; i < MAX; i++)
     sl1->addItem(createTestShoppingItem(i + MAX));
   CHECK(sl1->totalPrice() != sl2.totalPrice());
