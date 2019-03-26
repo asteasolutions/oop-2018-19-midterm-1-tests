@@ -17,7 +17,8 @@ class ShoppingItem {
 public:
   // За класа да се реализират:
   // подходящи конструктори, например:
-
+  // конструктор по подразбиране
+  ShoppingItem();
   // конструктор с параметри
   ShoppingItem(char const* name, int num, double price);
 
@@ -27,6 +28,8 @@ public:
   char const* getName() const;
   int getQuantity() const;
   double getUnitPrice() const;
+  
+  // Други помощни методи, ако е необходимо
 };
 
 ///
@@ -55,6 +58,8 @@ public:
   // Метод mostExpensive, който връща най-скъпата покупка (ако има две или повече най-скъпи покупки,
   // да се върне някоя от тях, без значение коя)
   ShoppingItem mostExpensive() const;
+
+  // Други помощни методи, ако е необходимо
 };
 
 ///
