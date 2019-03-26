@@ -41,10 +41,6 @@ public:
   char const* getLocation() const { return location; }
   char const* getDate()     const { return date; }
   double getTemperature()   const { return temperature; }
-
-  // Оператор за сравнение на измервания: <= (измерванията се сравняват спрямо стойностите,
-  // като другите атрибути се игнорират)
-  bool operator<=(Measurement const& other) const { return temperature <= other.temperature; }
 };
 
 ///
@@ -100,7 +96,7 @@ public:
     for (unsigned i = 0; i < size; i++) {
       if (strcmp(items[i].getLocation(), item.getLocation()) == 0) {
         // found it, take item with higher measurement
-        if (!(item <= items[i]))
+        if (item.getTemperature() > items[i].getTemperature())
           items[i] = item;
         return;
       }
