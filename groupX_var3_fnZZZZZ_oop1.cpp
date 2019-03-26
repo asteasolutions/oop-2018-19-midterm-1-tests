@@ -19,7 +19,7 @@ public:
   // подходящи конструктори, например:
 
   // конструктор с параметри
-  Measurement(char const* location, char const* time, int length);
+  Measurement(char const* location, char const* date, double temperature);
 
   // Ако е необходимо: деструктор, конструктор за копиране, оператор за присвояване
 
@@ -30,7 +30,7 @@ public:
 
   // Оператор за сравнение на измервания: <= (измерванията се сравняват спрямо стойностите,
   // като другите атрибути се игнорират)
-  bool operator<=(Measurement const& other);
+  bool operator<=(Measurement const& other) const;
 };
 
 ///
