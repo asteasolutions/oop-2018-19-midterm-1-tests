@@ -18,6 +18,8 @@ public:
   // За класа да се реализират:
   // подходящи конструктори, например:
 
+  // конструктор по подразбиране
+  Song();
   // конструктор с параметри
   Song(char const* title, char const* artist, int length);
 
@@ -27,6 +29,8 @@ public:
   char const* getTitle() const;
   char const* getArtist() const;
   int getLength() const;
+  
+  // Други помощни методи, ако е необходимо
 };
 
 ///
