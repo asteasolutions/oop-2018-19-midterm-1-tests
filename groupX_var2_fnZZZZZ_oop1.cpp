@@ -49,7 +49,7 @@ public:
   void addSong(Song const& song);
 
   // Метод totalLength, който изчислява и връща общата продължителност на всички песни в списъка
-  double totalLength() const;
+  int totalLength() const;
   
   // Метод longestSong, който връща най-дългата песен (ако има две или повече най-дълги песни, да се върне
   // някоя от тях, без значение коя)
